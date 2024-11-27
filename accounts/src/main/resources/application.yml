@@ -1,0 +1,62 @@
+server:
+  port: 8080
+
+
+build:
+  version: "10.0"
+
+spring:
+  application:
+    name: "accounts"
+  profiles:
+    active: "prod"
+  datasource:
+    url: jdbc:postgresql://localhost:5432/accountsdb
+    username: "postgres"
+    password: "0000"
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
+    sql:
+      init:
+        mode: always
+    #Only for lower enviroment it may impact the performance
+    properties:
+      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+  endpoint:
+    shutdown:
+      enabled: true
+
+
+endpoints:
+  shutdown:
+    enabled: true
+
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+info:
+  app:
+    name: "accounts"
+    description: "India ka Bank Accounts Description"
