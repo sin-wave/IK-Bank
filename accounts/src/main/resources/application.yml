@@ -25,10 +25,12 @@ spring:
     #Only for lower enviroment it may impact the performance
     properties:
       hibernate:
-#        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
   config:
     import: "optional:configserver:http://localhost:8071/"
+
+
 management:
   endpoints:
     web:
@@ -46,6 +48,10 @@ endpoints:
   shutdown:
     enabled: true
 
+#when ever accounts microservice is trying to register with the eureka server by default, it will try to resiter with the host name
+#the host name will make sense when ever you are trying to use DNS mappings inside your microservices, But inside local system,
+# we don't have any DNS mapping setups. we should prefer ip address as true so that my accounts microservices will register wit my eureka
+#in Simple words, My Eureka server is going to share the IP address details of accounts microservice so that the other microservice they can connect with my accounts
 
 eureka:
   instance:
@@ -60,3 +66,4 @@ info:
   app:
     name: "accounts"
     description: "India ka Bank Accounts Description"
+    version : "1.0.0"

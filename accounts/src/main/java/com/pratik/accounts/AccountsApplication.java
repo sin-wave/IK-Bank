@@ -33,7 +33,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 				description =  "Accounts MicroServices RESTApi Documentation",
 				url = ""
 		))
-public class 	AccountsApplication {
+
+public class AccountsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AccountsApplication.class, args);
