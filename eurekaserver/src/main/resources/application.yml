@@ -17,3 +17,10 @@ management:
     health:
       probes:
         enabled: true
+
+logging:
+  level:
+    com:
+      netflix:
+        discovery: DEBUG
+        eureka: DEBUG
