@@ -16,10 +16,27 @@ spring:
 #           search-locations: "file:///D://CODE//SpringBoot//configserver"
 
 management:
-  endpoint:
+  endpoints:
     web:
       exposure:
         include: "*"
+  info:
+    env:
+      enabled: true
+  endpoint:
+    shutdown:
+      enabled: true
+
+
+
+
+
+
+
+
+
+
+
 encrypt:
   key: "45D81EC1EF61DF9AD8D3E5BB397F9"
 

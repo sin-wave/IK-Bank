@@ -15,7 +15,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -72,9 +71,18 @@ public class AccountsController {
             summary = "Fetch Account REST API ",
             description = "REST API for fetch  Customer & Accounts in AKP Bank"
     )
-    @ApiResponse(
-            responseCode = "200",
-            description = "HTTP Status OK"
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP Status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "HTTP Status Internl Server Error",
+                    content = @Content(schema = @Schema(implementation = ErrorResponseDto.class))
+            )
+    }
+
 
     )
     @GetMapping("/fetch")

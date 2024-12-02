@@ -1,5 +1,6 @@
 package com.pratik.accounts.mapper;
 
+import com.pratik.accounts.dto.CustomerDetailsDto;
 import com.pratik.accounts.dto.CustomerDto;
 import com.pratik.accounts.entity.Customer;
 
@@ -9,6 +10,13 @@ public class CustomerMapper {
         customerDto.setEmail(customer.getEmail());
         customerDto.setMobileNumber(customer.getMobileNumber());
         return customerDto;
+    }
+
+    public static CustomerDetailsDto mapToCustomerDetailsDto(Customer customer, CustomerDetailsDto customerDetailsDtoDto) {
+        customerDetailsDtoDto.setName(customer.getName());
+        customerDetailsDtoDto.setEmail(customer.getEmail());
+        customerDetailsDtoDto.setMobileNumber(customer.getMobileNumber());
+        return customerDetailsDtoDto;
     }
 
     public static Customer mapToCustomer(CustomerDto customerDto, Customer customer) {
